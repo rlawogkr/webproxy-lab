@@ -746,7 +746,7 @@ void V(sem_t *sem)
  * rio_readn - Robustly read n bytes (unbuffered)
  */
 /* $begin rio_readn */
-ssize_t rio_readn(int fd, void *usrbuf, size_t n) //현재 파일 식별자 fd에서 n만큼의 데이터를 읽어 usrbuf에 저장 
+ssize_t rio_readn(int fd, void *usrbuf, size_t n) 
 {
     size_t nleft = n;
     ssize_t nread;
@@ -772,7 +772,7 @@ ssize_t rio_readn(int fd, void *usrbuf, size_t n) //현재 파일 식별자 fd�
  * rio_writen - Robustly write n bytes (unbuffered)
  */
 /* $begin rio_writen */
-ssize_t rio_writen(int fd, void *usrbuf, size_t n) //현재 메모리의 버퍼 usrbuf에서 n만큼의 데이터를 fd에 저장
+ssize_t rio_writen(int fd, void *usrbuf, size_t n) 
 {
     size_t nleft = n;
     ssize_t nwritten;
@@ -836,9 +836,9 @@ static ssize_t rio_read(rio_t *rp, char *usrbuf, size_t n)
 /* $begin rio_readinitb */
 void rio_readinitb(rio_t *rp, int fd) 
 {
-    rp->rio_fd = fd;//파일 식별자를 rp의 파일 식별자로 설정  
-    rp->rio_cnt = 0;//읽지 않은 바이트 수를 0으로 설정
-    rp->rio_bufptr = rp->rio_buf;//버퍼의 시작 주소를 버퍼 포인터로 설정
+    rp->rio_fd = fd;  
+    rp->rio_cnt = 0;  
+    rp->rio_bufptr = rp->rio_buf;
 }
 /* $end rio_readinitb */
 
@@ -868,9 +868,6 @@ ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n)
  * rio_readlineb - Robustly read a text line (buffered)
  */
 /* $begin rio_readlineb */
-/**
- * 텍스트 라인 전체를 내부 읽기 버퍼 rp에서 읽은 후, 메모리 버퍼 usrbuf으로 복사, \\0(NULL)로 텍스트 라인을 종료.
-*/
 ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen) 
 {
     int n, rc;
@@ -1068,7 +1065,6 @@ int Open_listenfd(char *port)
 }
 
 /* $end csapp.c */
-
 
 
 
